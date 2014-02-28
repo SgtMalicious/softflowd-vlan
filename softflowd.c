@@ -80,7 +80,11 @@ struct DATALINK {
 
 /* Datalink types that we know about */
 static const struct DATALINK lt[] = {
+#ifdef USE_8021Q
+	{ DLT_EN10MB,	18, 16,  2,  1, 0xffffffff,  0x0800,   0x86dd },
+#else
 	{ DLT_EN10MB,	14, 12,  2,  1, 0xffffffff,  0x0800,   0x86dd },
+#endif
 	{ DLT_PPP,	 5,  3,  2,  1, 0xffffffff,  0x0021,   0x0057 },
 #ifdef DLT_LINUX_SLL
 	{ DLT_LINUX_SLL,16, 14,  2,  1, 0xffffffff,  0x0800,   0x86dd },

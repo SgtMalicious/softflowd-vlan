@@ -42,8 +42,13 @@
  * Capture length for libpcap: Must fit the link layer header, plus 
  * a maximally sized ip/ipv6 header and most of a TCP header
  */
+#ifdef USE_8021Q
+#define LIBPCAP_SNAPLEN_V4		100
+#define LIBPCAP_SNAPLEN_V6		164
+#else
 #define LIBPCAP_SNAPLEN_V4		96
 #define LIBPCAP_SNAPLEN_V6		160
+#endif
 
 /*
  * Timeouts

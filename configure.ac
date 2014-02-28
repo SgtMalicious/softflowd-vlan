@@ -164,7 +164,14 @@ if test "x$ac_cv_lib_pcap_pcap_open_live" != "xyes" ; then
 	AC_MSG_ERROR([libpcap not found])
 fi
 
+AC_ARG_ENABLE( vlan-tag,
+[  --enable-vlan-tag       Enable support for 802.1Q vlan tags [default=no]],enable_vlan_tag="yes",enable_vlan_tag="no")
 
+if test "x$enable_vlan_tag" = "xyes"; then
+   USE_8021Q=1
+fi
+
+AC_SUBST(USE_8021Q)
 
 AC_EXEEXT
 AC_CONFIG_FILES([Makefile])

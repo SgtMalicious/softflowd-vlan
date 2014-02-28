@@ -16,11 +16,16 @@ CPPFLAGS=-I$(srcdir) @CPPFLAGS@
 LIBS=@LIBS@
 EXEEXT=@EXEEXT@
 INSTALL=@INSTALL@
+USE_8021Q=@USE_8021Q@
 
 #CFLAGS+=-DFLOW_RB		# Use red-black tree for flows
 CFLAGS+=-DFLOW_SPLAY		# Use splay tree for flows
 CFLAGS+=-DEXPIRY_RB		# Use red-black tree for expiry events
 #CFLAGS+=-DEXPIRY_SPLAY		# Use splay tree for expiry events
+
+ifeq ($(USE_8021Q), 1)
+	CFLAGS+=-DUSE_8021Q
+endif
 
 TARGETS=softflowd${EXEEXT} softflowctl${EXEEXT}
 
